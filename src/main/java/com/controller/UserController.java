@@ -3,6 +3,8 @@ package com.controller;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -23,5 +25,10 @@ public class UserController {
     public @ResponseBody String query() {
         List<String> names = userService.queryUser();
         return new Gson().toJson(names);
+    }
+    
+    @PostConstruct
+    public void testPostConstruct() {
+        System.err.println("testPostConstruct"); // constructor > @PostConstruct > InitializingBean > init-method
     }
 }
