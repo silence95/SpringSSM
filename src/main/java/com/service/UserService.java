@@ -2,7 +2,12 @@ package com.service;
 
 import java.util.List;
 
-public interface UserService {
+import com.dataSource.DataSource;
 
+public interface UserService {
+   
+    @DataSource
     public List<String> queryUser();
+    
+    public List<String> testDataSourceBk();
 }

@@ -1,12 +1,19 @@
 <html>
 <body>
 <h2>Hello World!</h2>
-<div id="name"></div>
+<div id="query"></div>
+<div id="testDataSource"></div>
 </body>
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var url = 'user/query.do';
+		show(url,'query');
+		url = 'user/testDataSource.do';
+		show(url,'testDataSource');
+	});
+	
+	function show(url,id) {
 		$.ajax({  
 	        "type" : "get",  
 	        "url" : url,  
@@ -16,9 +23,9 @@
 	        	var name = '';
 	        	for(var i = 0 ; i < data.length; i++ )
 	        		name += data[i];
-	        	$("#name").html(name);
+	        	$("#" + id).html(name);
 	        }
 	    });
-	});
+	}
 </script>
 </html>
