@@ -12,8 +12,8 @@
 
 	<!-- 引入配置文件 -->  
     <bean id="propertyConfigurer"  
-        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-        <property name="location" value="classpath:jdbc.properties" />  
+        class="com.common.DynamicPropertyPlaceholderConfigurer">  
+        <!-- <property name="location" value="classpath:jdbc.properties" />   -->
     </bean>
     
     <!-- Database -->

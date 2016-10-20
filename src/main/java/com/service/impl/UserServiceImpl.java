@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.UserDao;
 import com.dataSource.DataSource;
@@ -22,7 +21,7 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
-    @DataSource(value = DataSource.bk)
+    @DataSource(value = DataSource.bk) // 不加@DataSource就默认master
     public List<String> testDataSourceBk() {
         return userDao.queryAllName();
     }
