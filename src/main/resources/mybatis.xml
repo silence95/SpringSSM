@@ -84,18 +84,15 @@
     </aop:config>
     <aop:config expose-proxy="true"></aop:config>
     <!-- <aop:aspectj-autoproxy expose-proxy="true"/> -->
+    <!-- 多数据源 -->
    
-    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx  
+   
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx  -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
-        <property name="dataSource" ref="dataSource" />  
-        <qualifier value="transactionManager" />
+        <property name="dataSource" ref="dynamicDataSource" />  
     </bean>
-    <bean id="transactionManagerBK" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
-        <property name="dataSource" ref="dataSourceBK" />  
-        <qualifier value="transactionManagerBK" />
-    </bean> -->
      
-    <!-- <tx:annotation-driven transaction-manager="transactionManager" />
-    <tx:annotation-driven transaction-manager="transactionManagerBK" />    -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <!-- <tx:annotation-driven transaction-manager="transactionManagerBK" />    -->
     
 </beans>
