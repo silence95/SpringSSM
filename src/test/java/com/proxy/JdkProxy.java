@@ -11,7 +11,7 @@ public class JdkProxy implements InvocationHandler {
 	// proxy生成的代理类，继承java.lang.reflect.Proxy，实现HelloProxy接口
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-	    System.out.println("target:" + target + " method:" + method + " args:" + args);
+	    System.out.println("target:" + target + " proxy:" + proxy.getClass() + " method:" + method + " args:" + args);
 		System.out.println("jdkProxy start");
 		Object result = method.invoke(target, args);
 		System.out.println("jdkProxy end");
