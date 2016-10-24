@@ -8,11 +8,12 @@ public class JdkProxy implements InvocationHandler {
 
 	private Object target;
 	
+	// proxy生成的代理类，继承java.lang.reflect.Proxy，实现HelloProxy接口
 	@Override
-	public Object invoke(Object obj, Method method, Object[] params) throws Throwable {
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+	    System.out.println("target:" + target + " method:" + method + " args:" + args);
 		System.out.println("jdkProxy start");
-		System.out.println(target == obj);
-		Object result = method.invoke(obj, params);
+		Object result = method.invoke(target, args);
 		System.out.println("jdkProxy end");
 		return result;
 	}
@@ -24,7 +25,11 @@ public class JdkProxy implements InvocationHandler {
 	
 	public static void main(String[] args) {
 		JdkProxy jdkProxy = new JdkProxy();
-		HelloProxy helloProxy = (HelloProxy)jdkProxy.getProxy(new HelloProxyImpl());
-		helloProxy.sayHello();
+		HelloProxy helloJdkProxy = (HelloProxy)jdkProxy.getProxy(new HelloProxyImpl());
+		helloJdkProxy.sayHello();
+		// com.sun.proxy.$Proxy0 cannot be cast to com.proxy.HelloProxyImpl
+		// HelloProxyImpl helloJdkProxyImpl = (HelloProxyImpl)jdkProxy.getProxy(new HelloProxyImpl());
+		// helloJdkProxyImpl.sayFinalHello();
+		// helloJdkProxyImpl.sayStaticHello();
 	}
 }
