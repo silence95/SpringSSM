@@ -79,12 +79,14 @@
     <bean id="dataSourceExchange" class="com.dataSource.DataSourceExchange"/>
     
     <aop:config>
-    	<aop:pointcut id="datasourcePointcut" expression="execution(* com.service.impl.*.*(..))" />
+    	<aop:pointcut id="datasourcePointcut" expression=" execution(* com..*.*(..))" />
     	<aop:advisor advice-ref="dataSourceExchange" pointcut-ref="datasourcePointcut" order="1"/>
     </aop:config>
-    <aop:config expose-proxy="true"></aop:config>
+    <aop:config proxy-target-class="true"/>
+    <!-- <aop:config expose-proxy="true"></aop:config> -->
     <!-- <aop:aspectj-autoproxy expose-proxy="true"/> -->
     <!-- 多数据源 -->
+   
    
    
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx  -->

@@ -23,6 +23,7 @@ public class UserController {
     @Autowired UserService userService;
     
     @RequestMapping(value="/query", method={RequestMethod.GET}, produces=MediaType.APPLICATION_JSON_VALUE)
+    @DataSource(value = DataSource.bk)
     public @ResponseBody String query() {
         List<String> names = userService.queryUser();
         return new Gson().toJson(names);

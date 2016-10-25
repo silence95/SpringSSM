@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserService {
     @Autowired UserDao userDao;
     
     @Override
-    @DataSource(value = DataSource.master)
     public List<String> queryUser() {
         // return testSpringBean(); // 拦截不了，springAop的通知只能作用于springbean上，this调用自己的方法无效，可使用
         // ((UserService)AopContext.currentProxy()).testSpringBean();
