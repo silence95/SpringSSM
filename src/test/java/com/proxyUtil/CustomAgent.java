@@ -1,4 +1,4 @@
-package com.proxy;
+package com.proxyUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,16 +33,14 @@ public class CustomAgent implements  ClassFileTransformer {
             int lastIndexOf = className.lastIndexOf("/") + 1;
             String fileName = className.substring(lastIndexOf) + ".class";
             exportClazzToFile(fileName, classfileBuffer);
-            System.out.println(className + " --> export to " + new File("").getAbsolutePath() + " Succeess!");
+            System.out.println(className + " --> export to " + new File("src/test/java/com/proxyGenerateClazz/").getAbsolutePath() + " Succeess!");
         }
         return classfileBuffer;
     }
     
     private void exportClazzToFile(String fileName,byte[] data) {
         try {
-            File file = new File(fileName);
-            if(!file.exists()) 
-                file.createNewFile();
+            File file = new File("src/test/java/com/proxyGenerateClazz/" + fileName);
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(data);
             fos.close();
