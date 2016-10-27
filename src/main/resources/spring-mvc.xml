@@ -11,12 +11,11 @@
    
     <mvc:annotation-driven />  <!-- 解析controller，仅对controller有效 https://my.oschina.net/HeliosFly/blog/205343 --> 
     <mvc:default-servlet-handler/>   <!-- 用于servlet请求静态页面 http://www.cnblogs.com/fangqi/archive/2012/10/28/2743108.html -->
-    <!-- 为什么不配在dispatcher-servlet.xml 
-          父子容器问题 https://segmentfault.com/q/1010000003901757 -->                
+    <!-- 为什么不配在dispatcher-servlet.xml  父子容器问题 https://segmentfault.com/q/1010000003901757 -->                
 	<context:component-scan base-package="com.controller" /> 
 	
 	<context:component-scan base-package="com.service.impl" />
 	<context:component-scan base-package="com.dao" />
+	<!-- <bean id="dataSourceExchange" class="com.dataSource.DataSourceExchange"/> -->
 	
-	<datasource:annotation-driven />
 </beans>

@@ -14,7 +14,8 @@
 
 	<xsd:element name="annotation-driven">
 		<xsd:complexType>
-			<xsd:attribute name="advice" type="xsd:string" default="dataSourceExchange"></xsd:attribute>
+			<xsd:attribute name="advice-class-name" type="xsd:string" default="com.dataSource.DataSourceExchange"></xsd:attribute>
+			<xsd:attribute name="point-cut" type="xsd:string" default="com.service*..*"></xsd:attribute>
 			<xsd:attribute name="mode" default="proxy"></xsd:attribute>
 			<xsd:attribute name="proxy-target-class" type="xsd:boolean" default="false"></xsd:attribute>
 		</xsd:complexType>
