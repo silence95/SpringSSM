@@ -82,7 +82,7 @@
     	<aop:pointcut id="datasourcePointcut" expression=" execution(* com.controller.*.*(..)) or execution(* com.service.impl.*.*(..))" />
     	<aop:advisor advice-ref="dataSourceExchange" pointcut-ref="datasourcePointcut" order="1"/>
     </aop:config>
-    <aop:config proxy-target-class="true"/>
+    <!-- <aop:config proxy-target-class="true"/> -->
     <!-- <aop:config expose-proxy="true"></aop:config> -->
     <!-- <aop:aspectj-autoproxy expose-proxy="true"/> -->
     <!-- 多数据源 -->

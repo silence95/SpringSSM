@@ -1,0 +1,22 @@
+<xsd:schema xmlns="http://siling.com/schema/datasource"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:tool="http://www.springframework.org/schema/tool"
+	targetNamespace="http://siling.com/schema/datasource"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://www.springframework.org/schema/beans" schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" />
+	<xsd:import namespace="http://www.springframework.org/schema/tool" schemaLocation="http://www.springframework.org/schema/tool/spring-tool-4.0.xsd" />
+
+	<xsd:annotation>
+		<xsd:documentation>
+			<![CDATA[ Defines the elements used in the Spring Framework's declarative datasource infrastructure. ]]>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="annotation-driven">
+		<xsd:complexType>
+			<xsd:attribute name="advice" type="xsd:string" default="dataSourceExchange"></xsd:attribute>
+			<xsd:attribute name="mode" default="proxy"></xsd:attribute>
+			<xsd:attribute name="proxy-target-class" type="xsd:boolean" default="false"></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
