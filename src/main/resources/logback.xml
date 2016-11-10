@@ -1,0 +1,27 @@
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<jmxConfigurator />
+	<if condition='property("logEnv").equals("development")'> <!--  -DlogEnv=development -->
+		<then>
+			<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+				<encoder>
+					<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%thread] [%logger{50}] %X{requestId} >>> %msg%n</pattern>
+				</encoder>
+			</appender>
+			<root level="INFO">
+				<appender-ref ref="STDOUT" />
+			</root>
+		</then>
+	</if>
+
+	<appender name="FILE_LOG" class="ch.qos.logback.core.FileAppender">
+		<file>${catalina.base}/logs/log_receiver/file.log</file>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%thread] [%logger{50}] %X{requestId} >>> %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="fileLog" level="INFO" additivity="false">
+		<appender-ref ref="FILE_LOG" />
+	</logger>
+
+</configuration> 
