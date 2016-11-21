@@ -12,4 +12,5 @@
 	
 	<bean id="testAspect" class="com.aspect.TestAspect" /> <!-- 必须写完整的bean，component-scan不行 -->
 	<aop:aspectj-autoproxy />
+	
 </beans>

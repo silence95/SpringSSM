@@ -3,21 +3,38 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<h2>Hello World!</h2>
+<h2>loginName:<span id="loginName"></span></h2>
 <div id="query"></div>
 <div id="testDataSource"></div>
 <a href="TestServlet" id="al">调到testServlet</a></br>
-<input type="text" value="" id="loggerName"/><input type="button" value="确定" onclick="changeLogLevel();"/>
+输入要调整的日志名：<input type="text" value="" id="loggerName"/>
+输入要调整的日志级别：<input type="text" value="" id="logLevel" style="margin-left : 5px; "/>
+<input type="button" value="确定调整" onclick="changeLogLevel();"/></br>
 <input type="button" value="打印日志" onclick="printLog();"/>
 </body>
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
+
 	$(function() {
+		queryloginInfo();
 		var url = 'user/query.do';
 		show(url,'query');
 		url = 'user/testDataSource.do';
 		show(url,'testDataSource');
 	});
+	
+	function queryloginInfo() {
+		$.ajax({  
+	        "type" : "get",  
+	        "url" : "./user/queryloginInfo.do",  
+	        "data" : {},  
+	        "async" : true,  
+	        "success" : function(data) {
+	        	$("#loginName").html(data);
+	        }
+	    });
+	}
 	
 	function show(url,id) {
 		$.ajax({  
@@ -36,11 +53,12 @@
 	
 	function changeLogLevel() {
 		var loggerName = $("#loggerName").val();
+		var logLevel = $("#logLevel").val();
 		url = 'log/changeLogLevel.do';
 		$.ajax({  
 	        "type" : "get",  
 	        "url" : url,  
-	        "data" : {"loggerName" : loggerName, 'logLevel' : 'debug'},  
+	        "data" : {"loggerName" : loggerName, 'logLevel' : logLevel},  
 	        "async" : true,  
 	        "success" : function(data) {
 	        	alert(data);

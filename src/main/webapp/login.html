@@ -1,0 +1,30 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+name: <input type="text" id="loginName"/></br>
+<input type="button" value="提交" onclick="submit()"/>
+</body>
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./js/Math.uuid.js"></script>
+<script type="text/javascript">
+	
+	function submit() {
+		var url = 'user/login.do';
+		$.ajax({  
+	        "type" : "post",  
+	        "url" : url,  
+	        "data" : {"loginName" : $("#loginName").val()},  
+	        "async" : true,  
+	        "beforeSend" : function(request) {
+                request.setRequestHeader("requestId", Math.uuid()); // requestId
+            },
+	        "success" : function(data) {
+	        	alert(data);
+	        	window.location.href = "index.html";
+	        }
+	    });
+	}
+</script>
+</html>

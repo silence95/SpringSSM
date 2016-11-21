@@ -15,7 +15,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
-	<filter>
+	
+	<!-- <filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
 		</filter-class>
@@ -27,31 +28,44 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>*</url-pattern>
+	</filter-mapping> -->
+	
+	<filter>
+		<filter-name>securityServlet</filter-name>
+		<filter-class>com.servlet.SecurityServlet</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>securityServlet</filter-name>
+		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>securityServlet</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
+		<servlet-class>com.servlet.MyDispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:dispatcher-servlet.xml</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
-		<async-supported>true</async-supported>
+		<load-on-startup>1</load-on-startup> <!-- load-on-startup元素标记容器是否在启动的时候就加载这个servlet。当值小于0或者没有指定时，则表示容器在该servlet被选择时才会去加载 -->
+		<async-supported>true</async-supported> <!-- async = True 表示异步方式运行，就是说程序发出命令后不等其运行完毕就继续执行下一条语句 -->
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
-		<description></description>
-		<display-name>TestServlet</display-name>
 		<servlet-name>TestServlet</servlet-name>
-		<servlet-class>com.controller.TestServlet</servlet-class>
+		<servlet-class>com.servlet.TestServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TestServlet</servlet-name>
 		<url-pattern>/TestServlet</url-pattern>
 	</servlet-mapping>
+
 </web-app>
