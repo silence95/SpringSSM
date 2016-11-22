@@ -9,7 +9,7 @@ import org.springframework.beans.factory.xml.BeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
 
-// xml里面子定义注解：半成品
+// xml里面子定义注解
 public class DataSourceAnnotationParser implements BeanDefinitionParser {
  
     @Override

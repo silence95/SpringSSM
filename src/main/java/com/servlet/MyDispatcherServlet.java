@@ -35,8 +35,5 @@ public class MyDispatcherServlet extends DispatcherServlet{
         int rannum = (int)(random.nextDouble() * (99999 - 10000 + 1)) + 10000;
         return dateStr + rannum;
     }
-    
-    public static void main(String[] args) {
-        new MyDispatcherServlet().generateRequestId();
-    }
+  
 }
