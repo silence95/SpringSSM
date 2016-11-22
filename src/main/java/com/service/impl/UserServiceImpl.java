@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.dao.UserDao;
 import com.dataSource.DataSource;
 import com.service.UserService;
+import com.util.LoginUtil;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -36,6 +37,11 @@ public class UserServiceImpl implements UserService {
     
     public static void testStatic() {
         
+    }
+
+    @Override
+    public String queryloginInfo() {
+        return LoginUtil.getLoginName();
     }
 
 }

@@ -26,7 +26,7 @@ public class UserController {
     
     @RequestMapping(value="/queryloginInfo", method={RequestMethod.GET}, produces="text/plain;charset=UTF-8")
     public @ResponseBody String queryloginInfo() {
-        return LoginUtil.getLoginName();
+        return userService.queryloginInfo();
     }
     
     @RequestMapping(value="/query", method={RequestMethod.GET}, produces="application/json;charset=UTF-8")

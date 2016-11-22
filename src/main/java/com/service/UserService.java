@@ -9,5 +9,7 @@ public interface UserService {
     public List<String> testDataSourceBk();
     
     public List<String> testSpringBean();
+
+    public String queryloginInfo();
     
 }
