@@ -1,5 +1,6 @@
 package com.annotation;
 
+import org.springframework.aop.config.AopNamespaceUtils;
 import org.springframework.aop.support.RegexpMethodPointcutAdvisor;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
@@ -35,7 +36,7 @@ public class DataSourceAnnotationParser implements BeanDefinitionParser {
         String defaultExceptionResolverName = parserContext.getReaderContext().registerWithGeneratedName(responseStatusExceptionResolver);
         // 动态添加bean元素
         parserContext.registerComponent(new BeanComponentDefinition(responseStatusExceptionResolver, defaultExceptionResolverName));
-
+        AopNamespaceUtils.registerAspectJAutoProxyCreatorIfNecessary(parserContext, element); // 等于<aop:config/>
         return null;
     }
 

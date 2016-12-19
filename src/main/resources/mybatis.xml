@@ -78,22 +78,18 @@
     </bean> 
     
     
-    <!-- 方式1 
+    <!-- 方式1  -->
+    <!-- <bean id="dataSourceExchange" class="com.dataSource.DataSourceExchange"/>
     <aop:config>
     	<aop:pointcut id="datasourcePointcut" expression=" execution(* com.controller.*.*(..)) or execution(* com.service.impl.*.*(..))" />
     	<aop:advisor advice-ref="dataSourceExchange" pointcut-ref="datasourcePointcut" order="1"/>
-    </aop:config>
-     <aop:config proxy-target-class="true"/> -->
-    <!-- <aop:config expose-proxy="true"></aop:config> -->
-    <!-- <aop:aspectj-autoproxy expose-proxy="true"/> -->
+    </aop:config> -->
+     <!-- <aop:config proxy-target-class="true" />  -->
+     <!-- <aop:config expose-proxy="true" /> -->
     
-    <!-- 方式2 --><!-- <bean id="dataSourceExchange" class="com.dataSource.DataSourceExchange"/> -->
-    <datasource:annotation-driven point-cut="com.service..*"/> <!-- com.controller.*,com.service..*  多切点配置-->
+    <!-- 方式2 -->
+    <datasource:annotation-driven point-cut="com.service..*" proxy-target-class="true"/>  <!-- com.controller.*,com.service..*  多切点配置-->
     
-    <!-- 多数据源 -->
-   
-   
-   
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx  -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
         <property name="dataSource" ref="dynamicDataSource" />  
