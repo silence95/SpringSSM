@@ -16,7 +16,7 @@ public class TestAspect {
     }
     
     // 2、命名切点
-    @Pointcut("execution(* queryUser(..))") private void beforeGreet() {}
+    @Pointcut("execution(* testSpringBean(..))") private void beforeGreet() {}
     
     @Before("beforeGreet()")
     public void beforeGreetToRun() {
@@ -26,7 +26,7 @@ public class TestAspect {
     // 访问连接点信息
     @Around("beforeGreet()")
     public Object joinPointAccess(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println("joinPointAccess access method is:" + pjp.getTarget().getClass());
+        System.out.println("joinPointAccess access method is:" + pjp.getTarget());
         return pjp.proceed();
     }
 }
