@@ -9,7 +9,8 @@ import sun.misc.ProxyGenerator;
 
 import com.proxy.HelloProxyImpl;
 
-// JDK提供了sun.misc.ProxyGenerator.generateProxyClass(String proxyName,class[] interfaces) 底层方法来产生动态代理类的字节码
+// 1.JDK提供了sun.misc.ProxyGenerator.generateProxyClass(String proxyName,class[] interfaces) 底层方法来产生动态代理类的字节码
+// 2.System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");可以生成代理类Class文件
 public class JdkProxyUtil {
 
     private static FileOutputStream fos;
